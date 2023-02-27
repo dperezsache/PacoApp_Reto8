@@ -1,1 +1,14 @@
-<h1>Componente películas</h1>
+<h1>Página Películas</h1>
+<h2>Buscador</h2>
+<input type="text" id="npelicula">
+<button type="button" class="listbutton" (click)="list()">Buscar</button>
+
+<ul class="peliculas">
+  <li *ngFor="let pelicula of peliculas">
+    <span>{{pelicula.id}}</span>
+    <span>{{pelicula.imagen}}</span>
+    <span>{{pelicula.titulo}}</span>
+    <span>{{pelicula.descripcion}}</span>
+  </li>
+</ul>
+
