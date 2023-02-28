@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IDBService } from './idb.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PacoApp';
+
+  constructor(public servicioIDB: IDBService) {
+    this.servicioIDB.iniciarIndexedDB();
+  }
 }

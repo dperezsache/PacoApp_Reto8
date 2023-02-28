@@ -1,10 +1,8 @@
-<h1>Componentes películas</h1>
+<h1>Buscador de películas</h1>
 
-<label for="buscador">
-  Buscador<br/>
-  <input type="text" name="buscador" id="buscador">
-</label>
-<button type="button" class="listbutton" (click)="listado()">Buscar</button>
+
+<input type="text" name="buscador" id="buscador" placeholder="Buscar peliculas...">
+<button type="button" (click)="listado()">Buscar</button>
 
 <div>
   <table>
@@ -14,14 +12,16 @@
         <th>Nombre</th>
         <th>Tipo</th>
         <th>Descripcion</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let peli of peliculas.results">
-        <td><img src={{peli.image}} alt={{peli.title}} width="128px" height="128px"></td>
+        <td><img src={{peli.image}} alt="" width="128px"></td>
         <td>{{peli.title}}</td>
         <td>{{peli.resultType}}</td>
         <td>{{peli.description}}</td>
+        <td><button type="button" (click)="favorita(peli)">Favorita⭐</button></td>
       </tr>
     </tbody>
   </table>
