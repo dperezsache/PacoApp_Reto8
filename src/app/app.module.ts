@@ -8,6 +8,7 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { FavoritasComponent } from './favoritas/favoritas.component';
 import { CreditosComponent } from './creditos/creditos.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
     PeliculasComponent,
     FavoritasComponent,
     CreditosComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+
+          
   ],
   providers: [],
   bootstrap: [AppComponent]
