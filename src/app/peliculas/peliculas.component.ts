@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Pelicula } from '../pelicula';
 import { ImdbServiceService } from '../imdb-service.service';
-
 
 @Component({
   selector: 'app-peliculas',
@@ -9,23 +8,15 @@ import { ImdbServiceService } from '../imdb-service.service';
   styleUrls: ['./peliculas.component.css']
 })
 
-export class PeliculasComponent implements OnInit{
+export class PeliculasComponent {
+  peliculas: any = [];
 
-  peliculas: Pelicula[] = []
-  //movie: any[] =Peliculas.items;
-  //public items: any[] =Peliculas.items;
-  
-  constructor(public servicio : ImdbServiceService) {
-    console.log('llego')
-  }
+  constructor (public servicio: ImdbServiceService) {}
 
-  ngOnInit(): void {
-    this.getPeliculas()
-  }
-  getPeliculas(): void {
-    this.servicio.getPeliculas()
-    .subscribe(peliculas => this.peliculas = peliculas);
-  }
+  listado() {
+    let input: any = document.getElementById('buscador');
+    let url: string = "https://imdb-api.com/en/API/SearchMovie/k_7y2v3bw1/" + input.value;
 
-  
+    this.servicio.getLista(url).subscribe(peliculas => this.peliculas = peliculas);
+  }
 }
