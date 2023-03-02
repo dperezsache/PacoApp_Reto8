@@ -9,6 +9,7 @@ import { FavoritasComponent } from './favoritas/favoritas.component';
 import { CreditosComponent } from './creditos/creditos.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MensajesComponent } from './mensajes/mensajes.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     PeliculasComponent,
     FavoritasComponent,
-    CreditosComponent
+    CreditosComponent,
+    MensajesComponent
 
   ],
   imports: [

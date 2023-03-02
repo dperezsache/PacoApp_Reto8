@@ -1,0 +1,23 @@
+
+<button (click)="mensajeExito()">Insertar mensaje exito</button>
+<button (click)="mensajeError()">Insertar mensaje error</button>
+<button (click)="mensajeAviso()">Insertar mensaje aviso</button>
+<button (click)="mensajeInfo()">Insertar mensaje info.</button>
+<button (click)="limpiarMensajes()">Limpiar mensajes</button>
+
+<div *ngIf="mensajes.length">
+    <div *ngFor="let mensaje of mensajes">
+      <div *ngIf="mensaje.tipo=='exito'" style="background-color: lime; width: 300px; margin: 5px;">
+        <b>{{mensaje.titulo}}:</b> {{mensaje.descripcion}}
+      </div>
+      <div *ngIf="mensaje.tipo=='error'" style="background-color: red; width: 300px; margin: 5px;">
+        <b>{{mensaje.titulo}}:</b> {{mensaje.descripcion}}
+      </div>
+      <div *ngIf="mensaje.tipo=='aviso'" style="background-color: yellow; width: 300px; margin: 5px;">
+        <b>{{mensaje.titulo}}:</b> {{mensaje.descripcion}}
+      </div>
+      <div *ngIf="mensaje.tipo=='info'" style="background-color: cyan; width: 300px; margin: 5px;">
+        <b>{{mensaje.titulo}}:</b> {{mensaje.descripcion}}
+      </div>
+    </div>
+</div>
