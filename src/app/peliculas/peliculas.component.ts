@@ -24,4 +24,8 @@ export class PeliculasComponent {
   favorita(pelicula: Pelicula) {
     this.idb.existePelicula(pelicula);
   }
+
+  limpiar() {
+    this.idb.mensajes.limpiarMensajes();
+  }
 }

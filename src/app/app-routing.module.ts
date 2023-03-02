@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { CreditosComponent } from './creditos/creditos.component';
 import { FavoritasComponent } from './favoritas/favoritas.component';
-import { MensajesComponent } from './mensajes/mensajes.component';
 
 const rutas: Routes = [
   { path: '', redirectTo: '/menu', pathMatch: 'full' },
@@ -15,8 +13,7 @@ const rutas: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'creditos', component: CreditosComponent },
-  { path: 'favoritas', component: FavoritasComponent },
-  { path: 'mensajes', component: MensajesComponent }
+  { path: 'favoritas', component: FavoritasComponent }
 ];
 
 @NgModule({

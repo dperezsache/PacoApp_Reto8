@@ -15,6 +15,10 @@ export class FavoritasComponent {
   }
 
   cargar() {
-    this.favoritas = this.servicioIDB.listadoFavoritas;
+    this.favoritas = this.servicioIDB.getListado();
+  }
+
+  limpiar() {
+    this.servicioIDB.mensajes.limpiarMensajes();
   }
 }

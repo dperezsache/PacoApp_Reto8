@@ -32,3 +32,38 @@ button {
 input {
     height: 20px;
 }
+
+div.divExito,
+div.divError,
+div.divAviso,
+div.divInfo {
+    width: 400px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+div.divExito {
+    background-color: #d1e7dd;
+    border: 1px solid #a3cfbb;
+    color: #146c43;
+}
+
+div.divError {
+    background-color: #f8d7da;
+    border: 1px solid #f1aeb5;
+    color: #b02a37;
+}
+
+div.divAviso {
+    background-color: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #997404;
+}
+
+div.divInfo {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}

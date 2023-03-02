@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MensajeService } from './mensaje.service';
 import { Pelicula } from './pelicula';
 
 @Injectable({
@@ -9,15 +10,19 @@ export class IDBService {
   private callbacks:Function[] = [];
   public listadoFavoritas: Pelicula[] = [];
 
-  constructor() { }
+  constructor(public mensajes: MensajeService) {}
 
   registrar(callback:Function) {
     this.callbacks.push(callback);
   }
 
+  getListado() {
+    this.mensajes.insertarMensaje('Info', 'Cargado el listado de películas favoritas.', 'info');
+    return this.listadoFavoritas;
+  }
+
   avisar() {
     for(let callback of this.callbacks) {
-      console.log(callback)
       callback();
     }
   }
@@ -35,7 +40,10 @@ export class IDBService {
       this.db.createObjectStore('favoritas', { keyPath: 'id' });
     }
 
-    peticion.onerror = (err) => console.error(`Error de IndexedDB: ${peticion.error} ` + err);
+    peticion.onerror = (err) => {
+      console.error(`Error de IndexedDB: ${peticion.error} ` + err);
+      this.mensajes.insertarMensaje('Error', 'Error de IndexedDB al hacer conexión', 'error');
+    }
   }
 
   existePelicula(pelicula: Pelicula) {
@@ -47,7 +55,7 @@ export class IDBService {
       
       for(let peli of listaPeliculas) {
         if(peli.id === pelicula.id) {
-          console.info('La película a insertar ya existe');
+          this.mensajes.insertarMensaje('Aviso', 'La película a insertar ya existe en favoritos', 'aviso');
           existe = true;
           break;
         }
@@ -64,7 +72,12 @@ export class IDBService {
     
     peticion.onsuccess = () => {
       console.info('Película añadida a IDB');
+      this.mensajes.insertarMensaje('Éxito', 'Película añadida a favoritos', 'exito');
       this.cargarPeliculas();
+    }
+
+    peticion.onerror = () => {
+      this.mensajes.insertarMensaje('Error', 'No pudo ser insertada la película a favoritos.', 'error');
     }
   }
 
@@ -74,8 +87,13 @@ export class IDBService {
       .getAll();
     
     peticion.onsuccess = () => {
+      this.mensajes.insertarMensaje('Info', 'Listado local de películas actualizado.', 'info');
       this.listadoFavoritas = peticion.result;
       this.avisar();
     } 
+
+    peticion.onerror = () => {
+      this.mensajes.insertarMensaje('Error', 'No pudo ser cargado el listado local de películas.', 'error');
+    }
   }
 }
