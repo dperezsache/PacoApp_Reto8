@@ -1,0 +1,13 @@
+<h1>Reparto</h1>
+
+<button type="button" (click)="listadoReparto()">Cargar reparto</button>
+<button type="button" (click)="limpiarMensajes()">Limpiar mensajes</button>
+
+<app-mensajes></app-mensajes>
+
+<div>
+    <h3>{{reparto.title}}</h3>
+    <ul>
+        <li *ngFor="let actor of reparto.actors">{{actor.name}}</li>
+    </ul>
+</div>

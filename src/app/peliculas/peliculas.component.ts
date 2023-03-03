@@ -28,4 +28,8 @@ export class PeliculasComponent {
   limpiar() {
     this.idb.mensajes.limpiarMensajes();
   }
+
+  guardarID(id: Number) {
+    this.servicio.seleccionID = id;
+  }
 }
